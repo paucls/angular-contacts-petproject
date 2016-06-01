@@ -1,0 +1,11 @@
+{
+  "name": "contacts-ui",
+  "instances": 1,
+  "memory": "128M",
+  "domain": "apps.petproject.com",
+  "command": "node --harmony server.js",
+  "buildpack": "nodejs_buildpack",
+  "env": {
+    "baseUrl": "/contacts"
+  }
+}
