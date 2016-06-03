@@ -20,8 +20,12 @@
             <td>{{contact.phone}}</td>
             <td>{{contact.email}}</td>
             <td>
-                <button class="btn btn-info" type="submit">Edit</button>
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-info" type="submit">
+                    Edit
+                </button>
+                <button class="btn btn-danger" type="submit" ng-click="vm.openDeleteContactModal(contact)">
+                    Delete
+                </button>
             </td>
         </tr>
         </tbody>

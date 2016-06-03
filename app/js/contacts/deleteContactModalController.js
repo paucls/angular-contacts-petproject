@@ -6,7 +6,7 @@ angular
         function ($uibModalInstance, ContactsService, contact) {
             let vm = this;
 
-            vm.contactName = contact.name;
+            vm.contact = contact;
             vm.processing = false;
 
             vm.cancel = cancel;

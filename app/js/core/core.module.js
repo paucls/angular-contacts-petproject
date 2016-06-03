@@ -5,6 +5,7 @@ angular
         /*
          * Vendor modules
          */
+        'angularLodashWrapper',
         'angular-ladda',
         'ngAnimate',
         'ngSanitize',

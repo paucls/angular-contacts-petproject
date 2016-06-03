@@ -7,13 +7,14 @@
     "angular-sanitize": "1.4.x",
     "angular-bootstrap": "1.3.x",
     "angular-ladda": "0.3.x",
+    "angular-lodash-wrapper": "0.0.1",
     "angular-local-storage": "0.0.7",
     "angular-toastr": "1.6.x",
     "angular-ui-router": "0.2.x",
     "angular-ui-select": "0.16.x",
     "angular-uuid4": "0.3.x",
     "angular-whimsical-ripple": "1.0.x",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "3.3.x"
   },
   "devDependencies": {
     "angular-mocks": "1.4.x",
