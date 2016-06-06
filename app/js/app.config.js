@@ -18,3 +18,15 @@ angular
             animation: true
         };
     });
+
+// Toastr configuration
+angular
+    .module('contacts-ui')
+    .config(function (toastrConfig) {
+        angular.extend(toastrConfig, {
+            allowHtml: true,
+            maxOpened: 2,
+            positionClass: 'toast-bottom-right',
+            timeOut: 5000
+        });
+    });
