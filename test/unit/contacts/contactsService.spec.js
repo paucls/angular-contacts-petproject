@@ -4,7 +4,6 @@ describe('ContactsService', function () {
 
     const CONTACTS = Factory.buildList('contact', 5);
 
-    let RestDomains;
     let ContactsService;
     let $httpBackend;
     let $q;
@@ -41,6 +40,20 @@ describe('ContactsService', function () {
                 $httpBackend.flush();
 
                 expect(toastr.success).toHaveBeenCalledWith('Contact deleted successfully');
+            });
+
+        });
+
+        describe('when back-end operation results in error', function () {
+
+            it('should do nothing', function () {
+                var contactId = 'id1';
+                $httpBackend.expectDELETE('/contacts/' + contactId).respond(401);
+
+                ContactsService.deleteContact(contactId);
+                $httpBackend.flush();
+
+                expect(toastr.success).not.toHaveBeenCalled();
             });
 
         });
