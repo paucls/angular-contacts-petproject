@@ -7,7 +7,7 @@ module.exports = function (gulp) {
     gulp.task(watch);
 
     gulp.task('build', gulp.series(
-        gulp.parallel('prepare', 'image', 'jsMinify', 'manifest', 'html')
+        gulp.parallel('prepare', 'image', 'fonts', 'jsMinify', 'manifest', 'html')
     ));
 
     gulp.task('dist', gulp.series('clean', gulp.parallel('jsVendor', 'cssVendor', 'partials', 'stubs', 'factories', 'sass', 'build')));

@@ -29,6 +29,7 @@ app.set('views', __dirname + '/app');
 
 app.use('/js', express.static(__dirname + '/app/js'));
 app.use('/css', express.static(__dirname + '/app/css'));
+app.use('/fonts', express.static(__dirname + '/app/fonts'));
 app.use('/img', express.static(__dirname + '/app/img'));
 app.use('/partials', express.static(__dirname + '/app/partials'));
 
