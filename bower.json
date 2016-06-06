@@ -14,7 +14,8 @@
     "angular-ui-select": "0.16.x",
     "angular-uuid4": "0.3.x",
     "angular-whimsical-ripple": "1.0.x",
-    "bootstrap": "3.3.x"
+    "bootstrap": "3.3.6",
+    "bootswatch-dist": "3.3.6-yeti"
   },
   "devDependencies": {
     "angular-mocks": "1.4.x",

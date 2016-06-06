@@ -17,7 +17,7 @@ require('./gulp4-tasks')(gulp, {
     ],
     wiredepExcludeCss: ['ladda.min.css'],
     minifyVendorCssGlobs: [
-        'bower_components/bootstrap/dist/css/bootstrap.min.css',
+        'bower_components/bootswatch-dist/css/bootstrap.min.css',
         'bower_components/ladda/dist/ladda-themeless.min.css'
     ],
     sonarExcludeCoverage: ',app/js/**/*.route.js,app/js/app.module.js,app/js/app.config.js',
