@@ -6,9 +6,9 @@
         Are you sure you wish to delete <strong>{{::vm.contact.firstName}} {{::vm.contact.lastName}}</strong>?
     </div>
     <div class="modal-footer">
+        <button id="delete-contact-modal-cancel" class="btn btn-link" ng-click="vm.cancel()">Cancel</button>
         <button id="delete-contact-modal-ok" class="btn btn-primary"
                 ng-click="vm.remove()" ladda="vm.processing">OK
         </button>
-        <button id="delete-contact-modal-cancel" class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>
