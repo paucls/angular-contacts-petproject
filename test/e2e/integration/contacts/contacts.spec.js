@@ -2,8 +2,8 @@
 
 describe('Contacts', function () {
 
-    let contactsPage = require('../../../pageObjects/contacts/contacts.po.js');
-    let deleteContactModal = require('../../../pageObjects/contacts/deleteContactModal.po.js');
+    let contactsPage = require('../../pageObjects/contacts/contacts.po.js');
+    let deleteContactModal = require('../../pageObjects/contacts/deleteContactModal.po.js');
 
     beforeEach(function () {
         contactsPage.go();

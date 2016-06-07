@@ -4,15 +4,15 @@ class ContactsPageObject {
 
     constructor() {
         // Header
-        this.pageTitle = element(by.css('.header-title'));
-        this.addContactButton = element(by.id('add-contact-button'));
+        this.pageTitle = element(by.css('.page-header'));
 
-        // Table
+        // Body
+        this.addContactButton = element(by.id('add-contact-button'));
         this.contactsTableRows = element.all(by.repeater('contact in vm.contacts'));
     }
 
     go() {
-        browser.get(browser.params.url + 'projects');
+        browser.get(browser.params.url + 'contacts');
     }
 
 }
