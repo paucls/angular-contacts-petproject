@@ -81,6 +81,7 @@
     "protractor-flake": "1.0.3",
     "protractor-jasmine2-html-reporter": "0.0.6",
     "require-directory": "2.1.1",
+    "sync-exec": "0.6.2",
     "underscore": "1.8.3",
     "versiony": "1.4.0",
     "wiredep": "3.0.0",
