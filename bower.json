@@ -15,7 +15,8 @@
     "angular-uuid4": "0.3.x",
     "angular-whimsical-ripple": "1.0.x",
     "bootstrap": "3.3.6",
-    "bootswatch-dist": "3.3.6-yeti"
+    "bootswatch-dist": "3.3.6-yeti",
+    "lodash": "4.13.1"
   },
   "devDependencies": {
     "angular-mocks": "1.4.x",
