@@ -39,7 +39,7 @@ describe('Contacts', function () {
             expect(deleteContactModal.isDisplayed()).toBeTruthy();
             expect(deleteContactModal.header.getText()).toBe('Delete Contact');
             expect(deleteContactModal.body.getText()).toContain('Are you sure you wish to delete');
-            expect(deleteContactModal.okButton.isDisplayed()).toBeTruthy();
+            expect(deleteContactModal.deleteButton.isDisplayed()).toBeTruthy();
             expect(deleteContactModal.cancelButton.isDisplayed()).toBeTruthy();
         });
 
@@ -47,7 +47,7 @@ describe('Contacts', function () {
             expect(contactsPage.contactsTableRows.count()).toBe(6);
 
             contactsPage.clickDeleteOnContactRow(0);
-            deleteContactModal.okButton.click();
+            deleteContactModal.deleteButton.click();
 
             expect(contactsPage.successToast.isDisplayed()).toBeTruthy();
             expect(contactsPage.successToast.getText()).toBe('Contact deleted successfully');

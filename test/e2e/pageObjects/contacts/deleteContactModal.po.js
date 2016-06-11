@@ -7,7 +7,7 @@ class DeleteContactModalPageObject {
         this.header = this.modal.element(by.css('div.modal-header'));
         this.body = this.modal.element(by.css('div.modal-body'));
 
-        this.okButton = element(by.id('delete-contact-modal-ok'));
+        this.deleteButton = element(by.id('delete-contact-modal-delete'));
         this.cancelButton = element(by.id('delete-contact-modal-cancel'));
     }
 
