@@ -3,6 +3,7 @@
 describe('Contacts', function () {
 
     let contactsPage = require('../../pageObjects/contacts/contacts.po.js');
+    let addContactModal = require('../../pageObjects/contacts/addContactModal.po.js');
     let deleteContactModal = require('../../pageObjects/contacts/deleteContactModal.po.js');
 
     beforeEach(function () {
@@ -51,6 +52,27 @@ describe('Contacts', function () {
             expect(contactsPage.successToast.isDisplayed()).toBeTruthy();
             expect(contactsPage.successToast.getText()).toBe('Contact deleted successfully');
             expect(contactsPage.contactsTableRows.count()).toBe(5);
+        });
+
+    });
+
+
+    describe('Add Contact', function () {
+
+        beforeEach(function () {
+            contactsPage.addContactButton.click();
+        });
+
+        it('should show the Add Contact dialog', function () {
+            expect(addContactModal.isDisplayed()).toBeTruthy();
+            expect(addContactModal.header.getText()).toBe('Add Contact');
+
+            //TODO
+
+            expect(addContactModal.saveButton.isDisplayed()).toBeTruthy();
+            expect(addContactModal.saveButton.getAttribute('disabled')).toBeTruthy();
+            expect(addContactModal.cancelButton.isDisplayed()).toBeTruthy();
+            expect(addContactModal.cancelButton.getAttribute('disabled')).toBeNull();
         });
 
     });
