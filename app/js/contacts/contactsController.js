@@ -10,12 +10,22 @@ angular
             vm.contacts = [];
             vm.loading = true;
 
+            vm.openAddContactModal = openAddContactModal;
             vm.openDeleteContactModal = openDeleteContactModal;
 
             init();
 
             function init() {
                 ContactsService.getContacts().then(contacts => vm.contacts = contacts);
+            }
+
+            function openAddContactModal() {
+                $uibModal.open({
+                    templateUrl: 'partials/contacts/add-contact-modal.html',
+                    controller: 'AddContactModalController',
+                    controllerAs: 'vm',
+                    bindToController: true
+                }).result.then(init);
             }
 
             function openDeleteContactModal(contact) {

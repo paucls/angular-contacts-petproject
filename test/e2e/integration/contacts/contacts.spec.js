@@ -30,9 +30,9 @@ describe('Contacts', function () {
 
     });
 
-    describe('Delete Contact', function () {
+    describe('Delete Contact dialog', function () {
 
-        it('should show the Delete Contact dialog when delete action is clicked on a contact', function () {
+        it('should be shown when delete action is clicked on a contact row', function () {
             expect(contactsPage.contactsTableRows.count()).toBe(6);
             contactsPage.clickDeleteOnContactRow(0);
 
@@ -56,23 +56,48 @@ describe('Contacts', function () {
 
     });
 
-
-    describe('Add Contact', function () {
+    describe('Add Contact dialog', function () {
 
         beforeEach(function () {
             contactsPage.addContactButton.click();
         });
 
-        it('should show the Add Contact dialog', function () {
+        it('should be displayed and initialized correctly', function () {
             expect(addContactModal.isDisplayed()).toBeTruthy();
             expect(addContactModal.header.getText()).toBe('Add Contact');
 
-            //TODO
+            expect(addContactModal.firstNameInput.isDisplayed()).toBeTruthy();
+            expect(addContactModal.lastNameInput.isDisplayed()).toBeTruthy();
+            expect(addContactModal.companyInput.isDisplayed()).toBeTruthy();
+            expect(addContactModal.phoneInput.isDisplayed()).toBeTruthy();
+            expect(addContactModal.emailInput.isDisplayed()).toBeTruthy();
+            expect(addContactModal.addressInput.isDisplayed()).toBeTruthy();
+            expect(addContactModal.notesTextArea.isDisplayed()).toBeTruthy();
 
             expect(addContactModal.saveButton.isDisplayed()).toBeTruthy();
             expect(addContactModal.saveButton.getAttribute('disabled')).toBeTruthy();
             expect(addContactModal.cancelButton.isDisplayed()).toBeTruthy();
             expect(addContactModal.cancelButton.getAttribute('disabled')).toBeNull();
+        });
+
+        it('should prevent the user from saving with invalid fields', function () {
+            expect(addContactModal.saveButton.getAttribute('disabled')).toBeTruthy();
+
+            addContactModal.firstNameInput.sendKeys('John');
+
+            expect(addContactModal.saveButton.getAttribute('disabled')).toBeFalsy();
+        });
+
+        it('should save contact when fields are populated and user clicks save', function () {
+            addContactModal.firstNameInput.sendKeys('John');
+            addContactModal.lastNameInput.sendKeys('Doe');
+            addContactModal.companyInput.sendKeys('ACME');
+            addContactModal.phoneInput.sendKeys('075 1234567');
+            addContactModal.emailInput.sendKeys('john.doe@acme.com');
+            addContactModal.addressInput.sendKeys('Acme City');
+            addContactModal.notesTextArea.sendKeys('Some notes ...');
+
+            //TODO
         });
 
     });
