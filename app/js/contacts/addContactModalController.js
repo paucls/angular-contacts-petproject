@@ -16,8 +16,11 @@ angular
                 $uibModalInstance.dismiss('cancel');
             }
 
-            function save() {
+            function save(contact) {
                 vm.processing = true;
-                
+
+                ContactsService
+                    .createContact(contact)
+                    .then($uibModalInstance.close);
             }
         });

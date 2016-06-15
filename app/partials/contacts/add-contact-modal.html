@@ -69,7 +69,7 @@
                 ng-click="vm.cancel()">Cancel
         </button>
         <button id="add-contact-modal-save" class="btn btn-primary"
-                ng-click="vm.save()"
+                ng-click="vm.save(vm.contact)"
                 ng-disabled="addContactForm.$pristine || addContactForm.$invalid"
                 ladda="vm.processing">Save
         </button>

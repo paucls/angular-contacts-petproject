@@ -25,9 +25,19 @@ angular
             .respond(() => [200, contacts]);
 
         $httpBackend
+            .whenPOST(new RegExp('contacts$'))
+            .respond((method, url, data) => {
+                let contact = JSON.parse(data);
+
+                contacts.push(contact);
+
+                return [201];
+            });
+
+        $httpBackend
             .whenDELETE(new RegExp('contacts/*'))
             .respond((method, url) => {
-                var id = getUuidFromUrl(url);
+                let id = getUuidFromUrl(url);
 
                 contacts = _.reject(contacts, {id: id});
 
@@ -35,7 +45,7 @@ angular
             });
 
         function getUuidFromUrl(url) {
-            var match = url.match(REGEXP_UUID);
+            let match = url.match(REGEXP_UUID);
 
             return match ? match[0] : '';
         }

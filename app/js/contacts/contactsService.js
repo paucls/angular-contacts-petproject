@@ -6,9 +6,16 @@ angular
         function ($http, toastr) {
 
             return {
+                createContact: createContact,
                 deleteContact: deleteContact,
                 getContacts: getContacts
             };
+
+            function createContact(contact) {
+                return $http
+                    .post('/contacts', contact)
+                    .then(contact => toastr.success('Contact created successfully'));
+            }
 
             function deleteContact(conctactId) {
                 return $http

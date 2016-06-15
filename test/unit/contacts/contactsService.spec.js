@@ -28,6 +28,30 @@ describe('ContactsService', function () {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
+    describe('createContact()', function () {
+
+        it('should call service to create new contact', function () {
+            $httpBackend.expectPOST('/contacts').respond([201]);
+
+            ContactsService.createContact(Factory.build('contact'));
+            $httpBackend.flush();
+        });
+
+        describe('when back-end operation results in success', function () {
+
+            it('should emit a success message', function () {
+                $httpBackend.expectPOST('/contacts').respond([201]);
+
+                ContactsService.createContact(Factory.build('contact'));
+                $httpBackend.flush();
+
+                expect(toastr.success).toHaveBeenCalledWith('Contact created successfully');
+            });
+
+        });
+
+    });
+
     describe('deleteContact()', function () {
 
         describe('when back-end operation results in success', function () {
