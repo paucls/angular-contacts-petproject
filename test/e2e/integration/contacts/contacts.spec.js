@@ -2,6 +2,8 @@
 
 describe('Contacts', function () {
 
+    const CONTACTS_COUNT = 6;
+
     let contactsPage = require('../../pageObjects/contacts/contacts.po.js');
     let addContactModal = require('../../pageObjects/contacts/addContactModal.po.js');
     let deleteContactModal = require('../../pageObjects/contacts/deleteContactModal.po.js');
@@ -25,7 +27,7 @@ describe('Contacts', function () {
     describe('Contacts Table', function () {
 
         it('should have 6 visible rows', function () {
-            expect(contactsPage.contactsTableRows.count()).toBe(6);
+            expect(contactsPage.contactsTableRows.count()).toBe(CONTACTS_COUNT);
         });
 
     });
@@ -33,7 +35,6 @@ describe('Contacts', function () {
     describe('Delete Contact dialog', function () {
 
         it('should be shown when delete action is clicked on a contact row', function () {
-            expect(contactsPage.contactsTableRows.count()).toBe(6);
             contactsPage.clickDeleteOnContactRow(0);
 
             expect(deleteContactModal.isDisplayed()).toBeTruthy();
@@ -44,14 +45,12 @@ describe('Contacts', function () {
         });
 
         it('should remove the contact and notify success', function () {
-            expect(contactsPage.contactsTableRows.count()).toBe(6);
-
             contactsPage.clickDeleteOnContactRow(0);
             deleteContactModal.deleteButton.click();
 
             expect(contactsPage.successToast.isDisplayed()).toBeTruthy();
             expect(contactsPage.successToast.getText()).toBe('Contact deleted successfully');
-            expect(contactsPage.contactsTableRows.count()).toBe(5);
+            expect(contactsPage.contactsTableRows.count()).toBe(CONTACTS_COUNT - 1);
         });
 
     });
@@ -97,7 +96,12 @@ describe('Contacts', function () {
             addContactModal.addressInput.sendKeys('Acme City');
             addContactModal.notesTextArea.sendKeys('Some notes ...');
 
-            //TODO
+            addContactModal.saveButton.click();
+
+            expect(contactsPage.successToast.isDisplayed()).toBeTruthy();
+            expect(contactsPage.successToast.getText()).toBe('Contact created successfully');
+            expect(contactsPage.contactsTableRows.count()).toBe(CONTACTS_COUNT + 1);
+            expect(contactsPage.contactsTableRows.get(CONTACTS_COUNT).getText()).toContain('John');
         });
 
     });
