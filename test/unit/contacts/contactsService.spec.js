@@ -2,6 +2,7 @@
 
 describe('ContactsService', function () {
 
+    const CONTACT = Factory.build('contact');
     const CONTACTS = Factory.buildList('contact', 5);
 
     let ContactsService;
@@ -33,7 +34,7 @@ describe('ContactsService', function () {
         it('should call service to create new contact', function () {
             $httpBackend.expectPOST('/contacts').respond([201]);
 
-            ContactsService.createContact(Factory.build('contact'));
+            ContactsService.createContact(CONTACT);
             $httpBackend.flush();
         });
 
@@ -42,10 +43,34 @@ describe('ContactsService', function () {
             it('should emit a success message', function () {
                 $httpBackend.expectPOST('/contacts').respond([201]);
 
-                ContactsService.createContact(Factory.build('contact'));
+                ContactsService.createContact(CONTACT);
                 $httpBackend.flush();
 
                 expect(toastr.success).toHaveBeenCalledWith('Contact created successfully');
+            });
+
+        });
+
+    });
+
+    describe('updateContact()', function () {
+
+        it('should call service to update contact', function () {
+            $httpBackend.expectPOST(`/contacts/${CONTACT.id}`).respond([201]);
+
+            ContactsService.updateContact(CONTACT);
+            $httpBackend.flush();
+        });
+
+        describe('when back-end operation results in success', function () {
+
+            it('should emit a success message', function () {
+                $httpBackend.expectPOST(`/contacts/${CONTACT.id}`).respond([201]);
+
+                ContactsService.updateContact(CONTACT);
+                $httpBackend.flush();
+
+                expect(toastr.success).toHaveBeenCalledWith('Contact updated successfully');
             });
 
         });

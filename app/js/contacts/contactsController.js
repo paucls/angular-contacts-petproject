@@ -11,6 +11,7 @@ angular
             vm.loading = true;
 
             vm.openAddContactModal = openAddContactModal;
+            vm.openEditContactModal = openEditContactModal;
             vm.openDeleteContactModal = openDeleteContactModal;
 
             init();
@@ -25,6 +26,18 @@ angular
                     controller: 'AddContactModalController',
                     controllerAs: 'vm',
                     bindToController: true
+                }).result.then(init);
+            }
+
+            function openEditContactModal(contact) {
+                $uibModal.open({
+                    templateUrl: 'partials/contacts/edit-contact-modal.html',
+                    controller: 'EditContactModalController',
+                    controllerAs: 'vm',
+                    bindToController: true,
+                    resolve: {
+                        contact: _.constant(contact)
+                    }
                 }).result.then(init);
             }
 

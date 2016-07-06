@@ -52,6 +52,22 @@ describe('ContactsController', function () {
 
     });
 
+    describe('openEditContactModal()', function () {
+
+        it('should open a new modal instance', function () {
+            vm.openEditContactModal();
+            expect($uibModal.open).toHaveBeenCalled();
+        });
+
+        it('should reload table data when modal results on success', function () {
+            vm.openEditContactModal();
+            $rootScope.$apply();
+
+            expect(ContactsService.getContacts.calls.count()).toBe(2);
+        });
+
+    });
+
     describe('openDeleteContactModal()', function () {
 
         it('should open a new modal instance', function () {

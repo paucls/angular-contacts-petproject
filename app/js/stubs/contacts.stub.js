@@ -35,6 +35,17 @@ angular
             });
 
         $httpBackend
+            .whenPOST(new RegExp('contacts/*'))
+            .respond((method, url, data) => {
+                let contact = JSON.parse(data);
+                let index = _.findIndex(contacts, {id: contact.id});
+
+                contacts[index] = contact;
+
+                return [201, contact];
+            });
+
+        $httpBackend
             .whenDELETE(new RegExp('contacts/*'))
             .respond((method, url) => {
                 let id = getUuidFromUrl(url);

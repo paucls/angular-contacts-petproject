@@ -8,7 +8,8 @@ angular
             return {
                 createContact: createContact,
                 deleteContact: deleteContact,
-                getContacts: getContacts
+                getContacts: getContacts,
+                updateContact: updateContact
             };
 
             function createContact(contact) {
@@ -27,6 +28,12 @@ angular
                 return $http
                     .get('/contacts')
                     .then(response => response.data);
+            }
+
+            function updateContact(contact) {
+                return $http
+                    .post(`/contacts/${contact.id}`, contact)
+                    .then(contact => toastr.success('Contact updated successfully'));
             }
 
         });

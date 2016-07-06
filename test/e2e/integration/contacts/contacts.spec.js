@@ -6,6 +6,7 @@ describe('Contacts', function () {
 
     let contactsPage = require('../../pageObjects/contacts/contacts.po.js');
     let addContactModal = require('../../pageObjects/contacts/addContactModal.po.js');
+    let editContactModal = require('../../pageObjects/contacts/editContactModal.po.js');
     let deleteContactModal = require('../../pageObjects/contacts/deleteContactModal.po.js');
 
     beforeEach(function () {
@@ -102,6 +103,36 @@ describe('Contacts', function () {
             expect(contactsPage.successToast.getText()).toBe('Contact created successfully');
             expect(contactsPage.contactsTableRows.count()).toBe(CONTACTS_COUNT + 1);
             expect(contactsPage.contactsTableRows.get(CONTACTS_COUNT).getText()).toContain('John');
+        });
+
+    });
+
+    describe('Edit Contact dialog', function () {
+
+        beforeEach(function() {
+            contactsPage.clickEditOnContactRow(0);
+        });
+
+        it('should be shown when edit action is clicked on a contact row', function () {
+            expect(editContactModal.isDisplayed()).toBeTruthy();
+            expect(editContactModal.header.getText()).toBe('Edit Contact');
+
+            expect(editContactModal.updateButton.isDisplayed()).toBeTruthy();
+            expect(editContactModal.updateButton.getAttribute('disabled')).toBeTruthy();
+            expect(editContactModal.cancelButton.isDisplayed()).toBeTruthy();
+            expect(editContactModal.cancelButton.getAttribute('disabled')).toBeNull();
+        });
+
+        it('should update contact when fields are edited and user clicks update', function () {
+            editContactModal.firstNameInput.clear();
+            editContactModal.firstNameInput.sendKeys('Joan');
+
+            editContactModal.updateButton.click();
+
+            expect(contactsPage.successToast.isDisplayed()).toBeTruthy();
+            expect(contactsPage.successToast.getText()).toBe('Contact updated successfully');
+            expect(contactsPage.contactsTableRows.count()).toBe(CONTACTS_COUNT);
+            expect(contactsPage.contactsTableRows.get(0).getText()).toContain('Joan');
         });
 
     });

@@ -16,6 +16,10 @@ class ContactsPageObject {
         browser.get(browser.params.url + 'contacts');
     }
 
+    clickEditOnContactRow(rowNumber) {
+        this.contactsTableRows.get(rowNumber).element(by.css('.edit-contact-btn')).click();
+    }
+
     clickDeleteOnContactRow(rowNumber) {
         this.contactsTableRows.get(rowNumber).element(by.css('.delete-contact-btn')).click();
     }
