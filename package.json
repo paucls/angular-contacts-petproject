@@ -13,6 +13,12 @@
   "engines": {
     "node": ">=4.2.3"
   },
+  "scripts": {
+    "start": "gulp --debug",
+    "test": "gulp karma -w",
+    "e2e": "gulp ui",
+    "lint": "gulp lint"
+  },
   "dependencies": {
     "cfenv": "1.0.3",
     "compression": "1.5.2",
