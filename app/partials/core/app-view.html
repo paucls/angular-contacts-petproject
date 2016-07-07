@@ -9,17 +9,21 @@
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Contacts</a>
+                    <a class="navbar-brand" href="#">Personal Assistant</a>
                 </div>
                 <div class="collapse navbar-collapse" id="contacts-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li ui-sref-active="active"><a ui-sref="app.contacts">Contacts</a></li>
+                        <li ui-sref-active="active"><a ui-sref="app.tasks">Tasks</a></li>
+                        <li ui-sref-active="active"><a ui-sref="app.shopping-list">Shopping list</a></li>
+                    </ul>
+
                     <p class="navbar-text navbar-right">Signed in as {{::vm.user.displayName}}</p>
                 </div>
             </div>
         </nav>
 
         <div class="container-fluid">
-            <div ng-include="'partials/core/app-header.html'"></div>
-
             <div ui-view></div>
         </div>
     </div>

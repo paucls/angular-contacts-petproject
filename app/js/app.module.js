@@ -13,5 +13,7 @@ angular
         /*
          * Feature areas
          */
-		'contacts-ui.contacts'
+		'contacts-ui.contacts',
+		'contacts-ui.shopping-list',
+		'contacts-ui.tasks'
 	]);
